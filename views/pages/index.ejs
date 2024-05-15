@@ -23,9 +23,13 @@
       params: {
         apiKey: "pk_test_j9cd6kWLJCnN8fG56zLhiXVz0FIWuOS",
         baseCurrencyCode: 'usd',
-        baseCurrencyAmount: '100',
-        defaultCurrencyCode: 'eth',
-        paymentMethod: "paypal"
+        currencyCode: "usdc",
+        quoteCurrencyAmount: 100,
+        lockAmount: true,
+        showWalletAddressForm: true,
+        externalCustomerId: `<%- invoiceId %>`,
+        externalTransactionId: `<%- invoiceId %>`,
+        walletAddress: `<%- address %>`
       },
       variant: "overlay",
       handlers: {
