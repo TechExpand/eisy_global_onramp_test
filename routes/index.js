@@ -6,8 +6,16 @@ const routes = Router();
 routes.get('/', async function (req, res) {
     const browser = await puppeteer.launch({
         headless: true,
-        defaultViewport: null,
-        // dumpio: true
+        executablePath:
+            process.env.NODE_ENV === "production"
+                ? process.env.PUPPETEER_EXECUTABLE_PATH
+                : puppeteer.executablePath(),
+        args: [
+            "--disable-setuid-sandbox",
+            "--no-sandbox",
+            "--single-process",
+            "--no-zygote",
+        ],
     });
     const page = await browser.newPage();
     await page.goto('https://pay.radom.com/invoice/6e45f340-6f0a-400d-b59b-668917f78c2c', { waitUntil: 'networkidle2' });
