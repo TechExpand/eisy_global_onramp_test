@@ -59,9 +59,8 @@ routes.get('/sell', async function (req, res) {
 // webhook request
 routes.post('/api/webhook', function (req, res) {
     const data = req.body;
-    const value = JSON.stringify(data)
-    console.log(`Received data: ${JSON.stringify(data)}`);
-    if (value.data.status == "completed") {
+    console.log(`Received data: ${JSON.parse(data)}`);
+    if (data.data.status === "completed") {
         console.log(value.externalCustomerId)
         console.log("update invoice on successful")
         console.log("success...")
